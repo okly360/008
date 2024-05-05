@@ -1,0 +1,156 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver: 
+    - 223.5.5.5
+    - 8.8.8.8
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.0.0.1/dns-query
+    - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+proxies:
+- name: msp香港1
+  type: vless
+  server: ss.moonriver.sbs
+  port: 443
+  uuid: 143f97b0-c050-40a0-8e32-0e32569da85a
+  udp: true
+  tls: true
+  network: ws
+  servername: hk.mspk0.eu.org
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      Host: hk.mspk0.eu.org
+
+- name: msp香港2
+  type: vless
+  server: cfcdn3.sanfencdn9.com
+  port: 443
+  uuid: 143f97b0-c050-40a0-8e32-0e32569da85a
+  udp: true
+  tls: true
+  network: ws
+  servername: hk.mspk0.eu.org
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      Host: hk.mspk0.eu.org
+
+- name: msp新加坡1
+  type: vless
+  server: ss.moonriver.sbs
+  port: 443
+  uuid: 143f97b0-c050-40a0-8e32-0e32569da85a
+  udp: true
+  tls: true
+  network: ws
+  servername: sg.mspk0.eu.org
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      Host: sg.mspk0.eu.org
+
+- name: msp新加坡2
+  type: vless
+  server: cfcdn3.sanfencdn9.com
+  port: 443
+  uuid: 143f97b0-c050-40a0-8e32-0e32569da85a
+  udp: true
+  tls: true
+  network: ws
+  servername: sg.mspk0.eu.org
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      Host: sg.mspk0.eu.org
+
+- name: msp移动-hk
+  type: vless
+  server: cmcc.090227.xyz
+  port: 443
+  uuid: 143f97b0-c050-40a0-8e32-0e32569da85a
+  udp: true
+  tls: true
+  network: ws
+  servername: hk.mspk0.eu.org
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      Host: hk.mspk0.eu.org
+
+- name: msp移动-sg
+  type: vless
+  server: cmcc.090227.xyz
+  port: 443
+  uuid: 143f97b0-c050-40a0-8e32-0e32569da85a
+  udp: true
+  tls: true
+  network: ws
+  servername: sg.mspk0.eu.org
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      Host: sg.mspk0.eu.org
+
+proxy-groups:
+- name: 🌍选择代理节点
+  type: select
+  proxies:
+    - 负载均衡
+    - 自动选择
+    - DIRECT
+    - msp香港1
+    - msp香港2
+    - msp新加坡1
+    - msp新加坡2
+    - msp移动-hk
+    - msp移动-sg
+
+- name: 自动选择
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+    - msp香港1
+    - msp香港2
+    - msp新加坡1
+    - msp新加坡2
+    - msp移动-hk
+    - msp移动-sg
+
+- name: 负载均衡
+  type: load-balance
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  strategy: round-robin
+  proxies:
+    - msp香港1
+    - msp香港2
+    - msp新加坡1
+    - msp新加坡2
+    - msp移动-hk
+    - msp移动-sg
+
+rules:
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理节点
