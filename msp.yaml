@@ -110,6 +110,32 @@ proxies:
     headers:
       Host: sg.mspk0.eu.org
 
+- name: trojan电信-sg
+  type: trojan
+  server: ct.090227.xyz
+  port: 443
+  udp: true
+  password: kkb123456
+  sni: tr-sg.mspk0.eu.org
+  network: ws
+  ws-opts:
+    path: "/"
+    headers:
+      Host: tr-sg.mspk0.eu.org
+
+- name: trojan移动-sg
+  type: trojan
+  server: cmcc.090227.xyz
+  port: 443
+  udp: true
+  password: kkb123456
+  sni: tr-sg.mspk0.eu.org
+  network: ws
+  ws-opts:
+    path: "/"
+    headers:
+      Host: tr-sg.mspk0.eu.org
+
 proxy-groups:
 - name: 🌍选择代理节点
   type: select
@@ -123,6 +149,8 @@ proxy-groups:
     - msp新加坡2
     - msp移动-hk
     - msp移动-sg
+    - trojan电信-sg
+    - trojan移动-sg
 
 - name: 自动选择
   type: url-test
@@ -136,6 +164,8 @@ proxy-groups:
     - msp新加坡2
     - msp移动-hk
     - msp移动-sg
+    - trojan电信-sg
+    - trojan移动-sg
 
 - name: 负载均衡
   type: load-balance
@@ -149,6 +179,8 @@ proxy-groups:
     - msp新加坡2
     - msp移动-hk
     - msp移动-sg
+    - trojan电信-sg
+    - trojan移动-sg
 
 rules:
   - GEOIP,LAN,DIRECT
