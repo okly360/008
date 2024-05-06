@@ -26,7 +26,7 @@ dns:
       - 240.0.0.0/4
 
 proxies:
-- name: msp香港1
+- name: 香港1
   type: vless
   server: ss.moonriver.sbs
   port: 443
@@ -40,7 +40,7 @@ proxies:
     headers:
       Host: hk.mspk0.eu.org
 
-- name: msp香港2
+- name: 香港2
   type: vless
   server: cfcdn3.sanfencdn9.com
   port: 443
@@ -54,7 +54,7 @@ proxies:
     headers:
       Host: hk.mspk0.eu.org
 
-- name: msp新加坡1
+- name: 新加坡1
   type: vless
   server: ss.moonriver.sbs
   port: 443
@@ -68,7 +68,7 @@ proxies:
     headers:
       Host: sg.mspk0.eu.org
 
-- name: msp新加坡2
+- name: 新加坡2
   type: vless
   server: cfcdn3.sanfencdn9.com
   port: 443
@@ -82,7 +82,7 @@ proxies:
     headers:
       Host: sg.mspk0.eu.org
 
-- name: msp移动-hk
+- name: cm香港
   type: vless
   server: cmcc.090227.xyz
   port: 443
@@ -96,7 +96,7 @@ proxies:
     headers:
       Host: hk.mspk0.eu.org
 
-- name: msp移动-sg
+- name: cm新加坡
   type: vless
   server: cmcc.090227.xyz
   port: 443
@@ -109,65 +109,20 @@ proxies:
     path: "/?ed=2048"
     headers:
       Host: sg.mspk0.eu.org
-
- - name: trojan优选-sg
-   type: trojan
-   server: ss.moonriver.sbs
-   port: 443
-   udp: true
-   password: kkb123456
-   sni: tr-sg.mspk0.eu.org
-   network: ws
-   ws-opts:
-     path: "/"
-     headers:
-       Host: tr-sg.mspk0.eu.org
-   skip-cert-verify: true
-
-- name: trojan电信-sg
-  type: trojan
-  server: ct.090227.xyz
-  port: 443
-  udp: true
-  password: kkb123456
-  sni: tr-sg.mspk0.eu.org
-  network: ws
-  ws-opts:
-    path: "/"
-    headers:
-      Host: tr-sg.mspk0.eu.org
-  skip-cert-verify: true
-
-- name: trojan移动-sg
-  type: trojan
-  server: cmcc.090227.xyz
-  port: 443
-  udp: true
-  password: kkb123456
-  sni: tr-sg.mspk0.eu.org
-  network: ws
-  ws-opts:
-    path: "/"
-    headers:
-      Host: tr-sg.mspk0.eu.org
-  skip-cert-verify: true
 
 proxy-groups:
 - name: 🌍选择代理节点
   type: select
   proxies:
-    - 负载均衡
     - 自动选择
+    - 负载均衡
     - DIRECT
-    - msp香港1
-    - msp香港2
-    - msp新加坡1
-    - msp新加坡2
-    - msp移动-hk
-    - msp移动-sg
-    - trojan优选-sg
-    - trojan电信-sg
-    - trojan移动-sg
+    - 香港1
+    - 香港2
+    - 新加坡1
+    - 新加坡2
+    - cm香港
+    - cm新加坡
 
 - name: 自动选择
   type: url-test
@@ -175,15 +130,12 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - msp香港1
-    - msp香港2
-    - msp新加坡1
-    - msp新加坡2
-    - msp移动-hk
-    - msp移动-sg
-    - trojan优选-sg
-    - trojan电信-sg
-    - trojan移动-sg
+    - 香港1
+    - 香港2
+    - 新加坡1
+    - 新加坡2
+    - cm香港
+    - cm新加坡
 
 - name: 负载均衡
   type: load-balance
@@ -191,15 +143,12 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - msp香港1
-    - msp香港2
-    - msp新加坡1
-    - msp新加坡2
-    - msp移动-hk
-    - msp移动-sg
-    - trojan优选-sg
-    - trojan电信-sg
-    - trojan移动-sg
+    - 香港1
+    - 香港2
+    - 新加坡1
+    - 新加坡2
+    - cm香港
+    - cm新加坡
 
 rules:
   - GEOIP,LAN,DIRECT
