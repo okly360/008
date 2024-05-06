@@ -114,8 +114,8 @@ proxy-groups:
 - name: 🌍选择代理节点
   type: select
   proxies:
-    - 负载均衡
     - 自动选择
+    - 负载均衡
     - DIRECT
     - worker香港1
     - worker香港2
