@@ -5,3 +5,6 @@ vless://143f97b0-c050-40a0-8e32-0e32569da85a@cfcdn3.sanfencdn9.com:443?encryptio
 vless://143f97b0-c050-40a0-8e32-0e32569da85a@cmcc.090227.xyz:443?encryption=none&security=tls&sni=hk.mspk0.eu.org&fp=randomized&type=ws&host=hk.mspk0.eu.org&path=%2F%3Fed%3D2048#%E7%A7%BB%E5%8A%A8%E5%88%86%E6%B5%81-hk.msp
 vless://143f97b0-c050-40a0-8e32-0e32569da85a@ct.090227.xyz:443?encryption=none&security=tls&sni=hk.mspk0.eu.org&fp=randomized&type=ws&host=hk.mspk0.eu.org&path=%2F%3Fed%3D2048#%E7%94%B5%E4%BF%A1%E5%88%86%E6%B5%81-hk.msp
 vless://143f97b0-c050-40a0-8e32-0e32569da85a@cf.090227.xyz:2087?encryption=none&security=tls&sni=sg.mspk0.eu.org&fp=chrome&type=ws&host=sg.mspk0.eu.org&path=%2F%3Fed%3D2048#%E8%87%AA%E5%8A%A8%E5%88%86%E6%B5%81-sg.msp
+trojan://kkb123456@ss.moonriver.sbs:443?security=tls&type=ws&host=tr-sg.mspk0.eu.org&path=%2F#trojan%E4%BC%98%E9%80%89-sg
+trojan://kkb123456@ct.090227.xyz:443?security=tls&type=ws&host=tr-sg.mspk0.eu.org&path=%2F#trojan%E7%94%B5%E4%BF%A1-sg
+trojan://kkb123456@cmcc.090227.xyz:443?security=tls&type=ws&host=tr-sg.mspk0.eu.org&path=%2F#trojan%E7%A7%BB%E5%8A%A8-sg
