@@ -119,9 +119,10 @@ proxies:
    sni: tr-sg.mspk0.eu.org
    network: ws
    ws-opts:
-     path: /
+     path: "/"
      headers:
        Host: tr-sg.mspk0.eu.org
+   skip-cert-verify: true
 
 - name: trojan电信-sg
   type: trojan
@@ -132,9 +133,10 @@ proxies:
   sni: tr-sg.mspk0.eu.org
   network: ws
   ws-opts:
-    path: /
+    path: "/"
     headers:
       Host: tr-sg.mspk0.eu.org
+  skip-cert-verify: true
 
 - name: trojan移动-sg
   type: trojan
@@ -145,9 +147,10 @@ proxies:
   sni: tr-sg.mspk0.eu.org
   network: ws
   ws-opts:
-    path: /
+    path: "/"
     headers:
       Host: tr-sg.mspk0.eu.org
+  skip-cert-verify: true
 
 proxy-groups:
 - name: 🌍选择代理节点
