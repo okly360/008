@@ -110,6 +110,19 @@ proxies:
     headers:
       Host: sg.mspk0.eu.org
 
+ - name: trojan优选-sg
+   type: trojan
+   server: ss.moonriver.sbs
+   port: 443
+   udp: true
+   password: kkb123456
+   sni: tr-sg.mspk0.eu.org
+   network: ws
+   ws-opts:
+     path: /
+     headers:
+       Host: tr-sg.mspk0.eu.org
+
 - name: trojan电信-sg
   type: trojan
   server: ct.090227.xyz
@@ -119,7 +132,7 @@ proxies:
   sni: tr-sg.mspk0.eu.org
   network: ws
   ws-opts:
-    path: "/"
+    path: /
     headers:
       Host: tr-sg.mspk0.eu.org
 
@@ -132,7 +145,7 @@ proxies:
   sni: tr-sg.mspk0.eu.org
   network: ws
   ws-opts:
-    path: "/"
+    path: /
     headers:
       Host: tr-sg.mspk0.eu.org
 
@@ -149,6 +162,7 @@ proxy-groups:
     - msp新加坡2
     - msp移动-hk
     - msp移动-sg
+    - trojan优选-sg
     - trojan电信-sg
     - trojan移动-sg
 
@@ -164,6 +178,7 @@ proxy-groups:
     - msp新加坡2
     - msp移动-hk
     - msp移动-sg
+    - trojan优选-sg
     - trojan电信-sg
     - trojan移动-sg
 
@@ -179,6 +194,7 @@ proxy-groups:
     - msp新加坡2
     - msp移动-hk
     - msp移动-sg
+    - trojan优选-sg
     - trojan电信-sg
     - trojan移动-sg
 
